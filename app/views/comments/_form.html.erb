@@ -1,0 +1,22 @@
+<%# Using the CommentsController #create action to build comments %>
+<%# form_with is using an array which will build a nested route, such as "/articles/1/comments" %>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <p>
+    <%= form.label :commenter %><br>
+    <%= form.text_field :commenter %>
+  </p>
+
+  <p>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </p>
+
+  <p>
+    <%= form.label :status %><br>
+    <%= form.select :status, Visible::VALID_STATUSES, selected: 'public' %>
+  </p>
+
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

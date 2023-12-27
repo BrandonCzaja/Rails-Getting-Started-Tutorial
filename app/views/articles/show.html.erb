@@ -1,0 +1,28 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.body%></p>
+
+<ul>
+  <li>
+    <%= link_to "Edit", edit_article_path(@article) %>
+  </li>
+
+  <%# turbo method delete makes the HTTP request a DELETE request instead of a GET request %>
+  <%# This is required or it won't work %>
+  <li>
+    <%= link_to "Remove Article", article_path(@article), 
+      data: {
+      turbo_method: :delete,
+      turbo_confirm: "Are you sure?"
+      }  
+    %>
+  </li>
+</ul>
+
+<h2>Comments:</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+
+<p><%= link_to "Home", root_path %></p>

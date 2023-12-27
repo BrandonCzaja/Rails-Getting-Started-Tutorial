@@ -1,0 +1,5 @@
+<h1>New Article</h1>
+
+<%# Instead of creating a separate form, use the partial that is shared with #edit %>
+<%# "form" is actually the partial's file name but without the prefixing "_" %>
+<%= render "form", article: @article %>
